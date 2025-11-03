@@ -14,7 +14,10 @@ async function main() {
 
   try {
     const res = await db.insert(bookTable).values(book);
-    console.log(res);
+
+    const books = await db.select().from(bookTable);
+
+    console.log(books);
   } catch (error) {}
 }
 
