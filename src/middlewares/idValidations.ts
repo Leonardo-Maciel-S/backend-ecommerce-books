@@ -6,7 +6,7 @@ export function idValidation(req: Request, res: Response, next: NextFunction) {
   const id = req.params.id;
 
   if (!id) {
-    return res.status(status.BAD_REQUEST).send({ message: "Id é obrigatório" });
+    return res.status(status.BAD_REQUEST).json({ message: "Id é obrigatório" });
   }
 
   const isIdValid = isValidUuid(id);
@@ -14,7 +14,7 @@ export function idValidation(req: Request, res: Response, next: NextFunction) {
   if (!isIdValid) {
     return res
       .status(status.BAD_REQUEST)
-      .send({ message: "Id deve ser do tipo uuid" });
+      .json({ message: "Id deve ser do tipo uuid" });
   }
 
   next();
