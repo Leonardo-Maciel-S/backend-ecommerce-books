@@ -1,4 +1,4 @@
-import { db } from "./../connect/index.js";
+import { db } from "../index.js";
 import { bookTable } from "../schema/book.js";
 
 async function main() {

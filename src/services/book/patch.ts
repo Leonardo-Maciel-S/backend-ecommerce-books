@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import status from "http-status";
 
-import { db } from "../../db/connect/index.js";
+import { db } from "../../db/index.js";
 import { bookTable } from "../../db/schema/book.js";
 import type { BookBody } from "../../schema/index.js";
 
@@ -17,7 +17,7 @@ export async function patchBook(
   if (Object.keys(body).length === 0) {
     return res
       .status(status.BAD_REQUEST)
-      .send({ message: "Envie pelo menos um campo para editar" });
+      .json({ message: "Envie pelo menos um campo para editar" });
   }
 
   try {
@@ -31,7 +31,7 @@ export async function patchBook(
     if (!book) {
       return res
         .status(status.BAD_REQUEST)
-        .send({ message: "Livro não encontrado" });
+        .json({ message: "Livro não encontrado" });
     }
 
     const newBook = await db
@@ -42,10 +42,10 @@ export async function patchBook(
       .where(eq(bookTable.id, book.id))
       .returning();
 
-    res.send({ book: newBook[0] });
+    res.json({ book: newBook[0] });
   } catch (error) {
     res
       .status(status.INTERNAL_SERVER_ERROR)
-      .send({ message: "Erro inesperado" });
+      .json({ message: "Erro inesperado" });
   }
 }

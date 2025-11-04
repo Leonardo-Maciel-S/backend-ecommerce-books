@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { bookSchema, type BookBody } from "../../schema/index.js";
 import { status } from "http-status";
-import { db } from "../../db/connect/index.js";
+import { db } from "../../db/index.js";
 import { bookTable } from "../../db/schema/book.js";
 import type { ValidationError } from "yup";
 
@@ -21,10 +21,10 @@ export async function createBook(
 
   try {
     const response = await db.insert(bookTable).values(book).returning();
-    res.status(status.CREATED).send({ book: response[0] });
+    res.status(status.CREATED).json({ book: response[0] });
   } catch (error) {
     res
       .status(status.INTERNAL_SERVER_ERROR)
-      .send({ message: "Erro inesperado" });
+      .json({ message: "Erro inesperado" });
   }
 }
