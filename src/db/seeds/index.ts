@@ -13,11 +13,9 @@ async function main() {
   };
 
   try {
-    const res = await db.insert(bookTable).values(book);
+    const res = await db.insert(bookTable).values(book).returning();
 
-    const books = await db.select().from(bookTable);
-
-    console.log(books);
+    console.log(res);
   } catch (error) {}
 }
 
