@@ -8,4 +8,5 @@ export const bookTable = pgTable("book", {
   priceInCents: integer().notNull(),
   coverImg: text(),
   evaluation: real(),
+  userId: uuid(),
 });

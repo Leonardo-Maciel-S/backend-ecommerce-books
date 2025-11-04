@@ -1,7 +1,15 @@
+import { eq } from "drizzle-orm";
 import { db } from "../index.js";
 import { bookTable } from "../schema/book.js";
+import { userTable } from "../schema/user.js";
 
 async function main() {
+  const user: typeof userTable.$inferInsert = {
+    name: "Leonardo",
+    email: "leo@teste.com",
+    password: "12345678",
+  };
+
   const book: typeof bookTable.$inferInsert = {
     title: "A Jornada do Código",
     author: "Marcos Ribeiro",
@@ -13,10 +21,24 @@ async function main() {
   };
 
   try {
-    const res = await db.insert(bookTable).values(book).returning();
+    const userReturn = await db.insert(userTable).values(user).returning();
 
-    console.log(res);
-  } catch (error) {}
+    await db
+      .insert(bookTable)
+      .values({ ...book, userId: userReturn[0]?.id })
+      .returning();
+
+    if (userReturn[0]) {
+      const bookReturn = await db
+        .select()
+        .from(bookTable)
+        .where(eq(bookTable.userId, userReturn[0]?.id));
+
+      console.log(bookReturn);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 main();
