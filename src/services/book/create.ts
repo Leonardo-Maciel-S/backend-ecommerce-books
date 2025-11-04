@@ -23,7 +23,6 @@ export async function createBook(
     const response = await db.insert(bookTable).values(book).returning();
     res.status(status.CREATED).send({ book: response[0] });
   } catch (error) {
-    console.log(error);
     res
       .status(status.INTERNAL_SERVER_ERROR)
       .send({ message: "Erro inesperado" });
