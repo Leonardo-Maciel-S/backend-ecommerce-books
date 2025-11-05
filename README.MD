@@ -1,0 +1,42 @@
+# Ecommerce Book API
+
+Api de um ecommerce que desenvolvi para servir de base para o desafio frontend do [@cafeepixel](https://github.com/cafeepixel/desafio-cp-front).
+
+Inicialmente era apenas um CRUD simples que manipulava os livros que aparecia porem eu decidir criar o fluxo completo do ecommerce, desde criar conta, criar anuncio dos livros no seu perfil, carrinho e etc.
+
+## Funcionalidades já criadas
+
+### Books
+
+Acessando a rota /books temos algumas funcionalidades:
+
+1. Criar livro
+1. Buscar todos os livros cadastrados
+1. Editar livros (apenas os que vc criou)
+1. Deletar livros (apenas os que vc criou)
+1. Buscar livros pelo id do usuário vinculado.
+
+### User
+
+Acessando a rota /user temos algumas funcionalidades:
+
+1. Criar usuário (registro de conta)
+1. Logar no sistema
+1. Deslogar do sistema
+
+## Próximas Funcionalidades
+
+1. Separar livros por categoria
+1. Criar o tabela de carrinho
+1. Criar tabela para endereços
+1. Criar tabela de pedido
+
+## Regras de negócio
+
+- Um usuário pode cadastrar vários livros.
+- Um livro pode ter apenas um usuário vinculado.
+- Um usuário pode ter vários endereços.
+- Um carrinho pode ter vários livros.
+- Um pedido vai ter apenas um carrinho vinculado e possuir o total do valor.
+- Usuários deslogados apenas podem listar os livros.
+- Usuário só pode editar/deletar os livros que ele cadastrou
