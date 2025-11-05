@@ -1,7 +1,7 @@
 import * as y from "yup";
 
 export const userSchema = y.object({
-  id: y.string().required().nonNullable(),
+  id: y.string().optional(),
   name: y.string().required("Nome é obrigatório"),
   email: y.string().email("Email Inválido").required("Email é obrigatório"),
   password: y
