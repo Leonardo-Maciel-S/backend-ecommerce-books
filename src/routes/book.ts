@@ -1,16 +1,22 @@
 import express from "express";
 import { idValidation } from "../middlewares/idValidations.js";
 import { bookService } from "../services/book/index.js";
+import { loginValidation } from "../middlewares/login-validation.js";
 
-const bookRoute = express.Router();
+const bookRouter = express.Router();
 
-bookRoute.get("/", bookService.getAllBooks);
-bookRoute.get("/:id", idValidation, bookService.getAllByUserId);
+bookRouter.get("/", bookService.getAllBooks);
+bookRouter.get("/:id", idValidation, bookService.getAllByUserId);
 
-bookRoute.post("/", bookService.createBook);
+bookRouter.post("/", loginValidation, bookService.createBook);
 
-bookRoute.patch("/:id", idValidation, bookService.patchBook);
+bookRouter.patch("/:id", loginValidation, idValidation, bookService.patchBook);
 
-bookRoute.delete("/:id", idValidation, bookService.deleteBook);
+bookRouter.delete(
+  "/:id",
+  loginValidation,
+  idValidation,
+  bookService.deleteBook
+);
 
-export { bookRoute };
+export { bookRouter };

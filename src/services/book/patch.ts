@@ -3,9 +3,9 @@ import status from "http-status";
 
 import { db } from "../../db/index.js";
 import { bookTable } from "../../db/schema/book.js";
-import type { BookBody } from "../../schema/index.js";
 
 import { eq } from "drizzle-orm";
+import type { BookBody } from "../../interfaces/books.js";
 
 export async function patchBook(
   req: Request<{ id: string }, {}, BookBody>,

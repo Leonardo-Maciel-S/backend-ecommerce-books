@@ -7,7 +7,7 @@ export async function getAllBooks(_: Request, res: Response) {
   try {
     const books = await db.select().from(bookTable);
 
-    res.status(status.ACCEPTED).json({ books });
+    res.status(status.OK).json({ books });
   } catch (error) {
     res
       .status(status.INTERNAL_SERVER_ERROR)

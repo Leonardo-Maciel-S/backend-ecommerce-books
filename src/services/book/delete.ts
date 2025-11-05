@@ -26,7 +26,7 @@ export async function deleteBook(req: Request, res: Response) {
       .where(eq(bookTable.id, id!))
       .returning();
 
-    return res.status(status.ACCEPTED).json({ book: bookDeletedReturn[0] });
+    return res.status(status.OK).json({ book: bookDeletedReturn[0] });
   } catch (error) {
     res
       .status(status.INTERNAL_SERVER_ERROR)

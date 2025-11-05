@@ -1,9 +1,10 @@
 import type { Request, Response } from "express";
-import { bookSchema, type BookBody } from "../../schema/index.js";
+import { bookSchema } from "../../schema/book.js";
 import { status } from "http-status";
 import { db } from "../../db/index.js";
 import { bookTable } from "../../db/schema/book.js";
 import type { ValidationError } from "yup";
+import type { BookBody } from "../../interfaces/books.js";
 
 export async function createBook(
   req: Request<{}, {}, BookBody>,
