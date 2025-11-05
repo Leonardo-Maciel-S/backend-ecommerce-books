@@ -57,7 +57,7 @@ export async function login(
       maxAge: 1000 * 60 * 60,
     });
 
-    return res.status(status.ACCEPTED).json({
+    return res.status(status.OK).json({
       message: "Logado com sucesso!",
     });
   } catch (error) {

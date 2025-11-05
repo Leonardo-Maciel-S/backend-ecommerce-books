@@ -20,7 +20,7 @@ export async function createUser(
   } catch (error) {
     const e = error as ValidationError;
 
-    res.status(status.BAD_REQUEST).json({ message: e.errors[0] });
+    return res.status(status.BAD_REQUEST).json({ message: e.errors[0] });
   }
 
   try {

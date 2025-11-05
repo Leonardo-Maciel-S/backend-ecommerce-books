@@ -5,13 +5,18 @@ import { loginValidation } from "../middlewares/login-validation.js";
 
 const bookRouter = express.Router();
 
-bookRouter.get("/", loginValidation, bookService.getAllBooks);
+bookRouter.get("/", bookService.getAllBooks);
 bookRouter.get("/:id", idValidation, bookService.getAllByUserId);
 
-bookRouter.post("/", bookService.createBook);
+bookRouter.post("/", loginValidation, bookService.createBook);
 
-bookRouter.patch("/:id", idValidation, bookService.patchBook);
+bookRouter.patch("/:id", loginValidation, idValidation, bookService.patchBook);
 
-bookRouter.delete("/:id", idValidation, bookService.deleteBook);
+bookRouter.delete(
+  "/:id",
+  loginValidation,
+  idValidation,
+  bookService.deleteBook
+);
 
 export { bookRouter };
