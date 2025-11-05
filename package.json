@@ -21,6 +21,8 @@
   "homepage": "https://github.com/Leonardo-Maciel-S/backend-ecommerce-books#readme",
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
+    "@types/bcrypt": "^6.0.0",
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.7",
     "express": "^5.1.0",

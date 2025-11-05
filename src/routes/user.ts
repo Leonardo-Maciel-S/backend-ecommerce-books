@@ -1,7 +1,8 @@
 import express from "express";
+import { userService } from "../services/user/index.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/");
+userRouter.post("/register", userService.createUser);
 
 export { userRouter };

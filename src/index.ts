@@ -1,4 +1,4 @@
-import express, { type Request, type Response } from "express";
+import express from "express";
 import { bookRouter } from "./routes/book.js";
 import { userRouter } from "./routes/user.js";
 
