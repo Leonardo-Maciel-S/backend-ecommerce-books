@@ -13,6 +13,7 @@ export async function patchBook(
 ) {
   const id = req.params.id;
   const body = req.body;
+  const user = req.user;
 
   if (Object.keys(body).length === 0) {
     return res
@@ -32,6 +33,12 @@ export async function patchBook(
       return res
         .status(status.BAD_REQUEST)
         .json({ message: "Livro não encontrado" });
+    }
+
+    if (book.userId !== user?.id) {
+      return res
+        .status(status.UNAUTHORIZED)
+        .json({ message: "Você não pode deletar livros de outra pessoa." });
     }
 
     const newBook = await db

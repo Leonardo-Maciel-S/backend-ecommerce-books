@@ -12,7 +12,9 @@ export async function loginValidation(
   const jwt_secret = process.env.JWT_SECRET!;
 
   if (!token) {
-    res.status(status.UNAUTHORIZED).json({ message: "Usuário não logado." });
+    return res
+      .status(status.UNAUTHORIZED)
+      .json({ message: "Usuário não logado." });
   }
 
   await jwt.verify(token, jwt_secret, (err: any, decoded: any) => {

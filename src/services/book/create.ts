@@ -11,6 +11,13 @@ export async function createBook(
   res: Response
 ) {
   const book = req.body;
+  const user = req.user;
+
+  if (!user) {
+    return res
+      .status(status.UNAUTHORIZED)
+      .json({ message: "Usuário não logado." });
+  }
 
   try {
     await bookSchema.validate(book);
@@ -21,7 +28,10 @@ export async function createBook(
   }
 
   try {
-    const response = await db.insert(bookTable).values(book).returning();
+    const response = await db
+      .insert(bookTable)
+      .values({ ...book, userId: user.id })
+      .returning();
     res.status(status.CREATED).json({ book: response[0] });
   } catch (error) {
     res

@@ -7,6 +7,8 @@ import status from "http-status";
 export async function deleteBook(req: Request, res: Response) {
   const id = req.params.id;
 
+  const user = req.user;
+
   try {
     const bookReturn = await db
       .select()
@@ -19,6 +21,12 @@ export async function deleteBook(req: Request, res: Response) {
       return res
         .status(status.BAD_REQUEST)
         .json({ message: "Livro não encontrado" });
+    }
+
+    if (book.userId !== user?.id) {
+      return res
+        .status(status.UNAUTHORIZED)
+        .json({ message: "Você não pode deletar livros de outra pessoa." });
     }
 
     const bookDeletedReturn = await db
