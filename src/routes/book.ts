@@ -1,10 +1,11 @@
 import express from "express";
 import { idValidation } from "../middlewares/idValidations.js";
 import { bookService } from "../services/book/index.js";
+import { loginValidation } from "../middlewares/login-validation.js";
 
 const bookRouter = express.Router();
 
-bookRouter.get("/", bookService.getAllBooks);
+bookRouter.get("/", loginValidation, bookService.getAllBooks);
 bookRouter.get("/:id", idValidation, bookService.getAllByUserId);
 
 bookRouter.post("/", bookService.createBook);

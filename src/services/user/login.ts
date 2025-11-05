@@ -52,6 +52,8 @@ export async function login(
     });
 
     res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
       maxAge: 1000 * 60 * 60,
     });
 
