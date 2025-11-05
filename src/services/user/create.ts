@@ -1,22 +1,26 @@
 import type { Request, Response } from "express";
-import type { UserBody } from "../../interfaces/user.js";
+import type { CreateUserBody } from "../../interfaces/user.js";
 import status from "http-status";
 import { db } from "../../db/index.js";
 import { userTable } from "../../db/schema/user.js";
 import { eq } from "drizzle-orm";
 
 import bcrypt from "bcrypt";
+import { userSchema } from "../../schema/user.js";
+import type { ValidationError } from "yup";
 
 export async function createUser(
-  req: Request<{}, {}, UserBody>,
+  req: Request<{}, {}, CreateUserBody>,
   res: Response
 ) {
   const body = req.body;
 
-  if (!body) {
-    return res
-      .status(status.BAD_REQUEST)
-      .json({ message: "Envie o body na requisição." });
+  try {
+    await userSchema.validate(body);
+  } catch (error) {
+    const e = error as ValidationError;
+
+    res.status(status.BAD_REQUEST).json({ message: e.errors[0] });
   }
 
   try {
