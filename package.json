@@ -27,11 +27,13 @@
     "drizzle-orm": "^0.44.7",
     "express": "^5.1.0",
     "http-status": "^2.1.0",
+    "jsonwebtoken": "^9.0.2",
     "yup": "^1.7.1"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
     "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
     "drizzle-kit": "^0.31.6",
     "tsx": "^4.20.6"
   }
