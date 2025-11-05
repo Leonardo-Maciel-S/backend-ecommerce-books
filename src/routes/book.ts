@@ -1,5 +1,5 @@
 import express from "express";
-import { idValidation } from "../middlewares/idValidations.js";
+import { idValidation } from "../middlewares/id-validations.js";
 import { bookService } from "../services/book/index.js";
 import { loginValidation } from "../middlewares/login-validation.js";
 

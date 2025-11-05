@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-import { isValidUuid } from "../utils/isValidUuid.js";
+import { isValidUuid } from "../utils/is-valid-UUID.js";
 import status from "http-status";
 
 export function idValidation(req: Request, res: Response, next: NextFunction) {

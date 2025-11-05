@@ -1,7 +1,7 @@
 import { createBook } from "./create.js";
 import { deleteBook } from "./delete.js";
-import { getAllBooks } from "./getAll.js";
-import { getAllByUserId } from "./getAllByUsersId.js";
+import { getAllBooks } from "./get-all.js";
+import { getAllByUserId } from "./get-all-by-users-id.js";
 import { patchBook } from "./patch.js";
 
 export const bookService = {
