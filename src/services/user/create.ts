@@ -59,6 +59,7 @@ export async function createUser(
         name: user[0]?.name,
         email: user[0]?.email,
       },
+      message: "Usuário criado com sucesso!",
     });
   } catch (error) {
     return res
