@@ -10,7 +10,13 @@ const app = express();
 
 const port = process.env.PORT;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    allowedHeaders: ["Content-type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
