@@ -1,4 +1,4 @@
-import yup, { type InferType } from "yup";
+import yup from "yup";
 
 export const bookSchema = yup.object({
   id: yup.string(),
