@@ -6,7 +6,7 @@ import { loginValidation } from "../middlewares/login-validation.js";
 const bookRouter = express.Router();
 
 bookRouter.get("/", bookService.getAllBooks);
-bookRouter.get("/:id", idValidation, bookService.getAllByUserId);
+bookRouter.get("/", idValidation, bookService.getAllByUserId);
 
 bookRouter.post("/", loginValidation, bookService.createBook);
 

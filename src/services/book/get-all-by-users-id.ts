@@ -5,7 +5,13 @@ import status from "http-status";
 import { eq } from "drizzle-orm";
 
 export async function getAllByUserId(req: Request, res: Response) {
-  const id = req.params.id;
+  const id = req.user?.id;
+
+  if (!id) {
+    return res
+      .status(status.UNAUTHORIZED)
+      .json({ message: "Usuário não logado." });
+  }
 
   try {
     const books = await db
