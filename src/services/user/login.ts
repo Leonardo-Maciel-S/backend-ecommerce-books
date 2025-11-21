@@ -59,10 +59,7 @@ export async function login(
     });
 
     return res.status(status.OK).json({
-      user: {
-        name: userWithoutPassword.name,
-        email: userWithoutPassword.email,
-      },
+      user: userWithoutPassword,
       message: "Logado com sucesso!",
     });
   } catch (error) {
