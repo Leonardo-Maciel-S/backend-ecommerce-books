@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsx --env-file=.env --watch src/index.ts",
     "build": "tsc",
-    "start-render": "node ./../dist/src/index.js",
+    "start:render": "node ./../dist/src/index.js",
     "start": "node dist/src/index.js",
     "db:seed": "npx tsx --env-file=.env src/db/seeds/index.ts"
   },
