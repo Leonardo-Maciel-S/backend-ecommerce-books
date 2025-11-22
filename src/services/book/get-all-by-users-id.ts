@@ -13,12 +13,6 @@ export async function getAllByUserId(req: Request, res: Response) {
       .from(bookTable)
       .where(eq(bookTable.userId, id!));
 
-    if (books.length === 0) {
-      return res
-        .status(status.NOT_FOUND)
-        .json({ message: "Nenhum livro encontrado" });
-    }
-
     res.status(status.OK).json({ books });
   } catch (error) {
     res
