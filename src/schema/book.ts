@@ -14,4 +14,5 @@ export const bookSchema = yup.object({
   priceInCents: yup.number().required("Preço é obrigatório"),
   coverImg: yup.string().required("Imagem é obrigatório"),
   evaluation: yup.number(),
+  userId: yup.string(),
 });
