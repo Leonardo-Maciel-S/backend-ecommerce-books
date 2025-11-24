@@ -13,7 +13,7 @@ export async function getById(req: Request, res: Response) {
       .from(bookTable)
       .where(eq(bookTable.id, id!));
 
-    res.status(status.OK).json({ books });
+    res.status(status.OK).json({ book: books[0] });
   } catch (error) {
     res
       .status(status.INTERNAL_SERVER_ERROR)
