@@ -38,7 +38,7 @@ export async function patchBook(
     if (book.userId !== user?.id) {
       return res
         .status(status.UNAUTHORIZED)
-        .json({ message: "Você não pode deletar livros de outra pessoa." });
+        .json({ message: "Você não pode editar livros de outra pessoa." });
     }
 
     const newBook = await db
