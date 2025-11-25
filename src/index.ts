@@ -9,10 +9,11 @@ import { userRouter } from "./routes/user.js";
 const app = express();
 
 const port = process.env.PORT;
+const origin = process.env.FRONTEND_URL;
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: origin,
     allowedHeaders: ["Content-type", "Authorization"],
     credentials: true,
   })
