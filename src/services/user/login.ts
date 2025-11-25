@@ -54,7 +54,7 @@ export async function login(
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.ENVIRONMENT === "DEV" ? false : true,
-      sameSite: "lax",
+      sameSite: process.env.ENVIRONMENT === "DEV" ? "lax" : "none",
       maxAge: 1000 * 60 * 60,
     });
 
