@@ -7,7 +7,7 @@ const bookRouter = express.Router();
 
 bookRouter.get("/", bookService.getAllBooks);
 bookRouter.get("/user/:id", idValidation, bookService.getAllByUserId);
-bookRouter.get("/:id", loginValidation, idValidation, bookService.getById);
+bookRouter.get("/:id", idValidation, bookService.getById);
 
 bookRouter.post("/", loginValidation, bookService.createBook);
 
