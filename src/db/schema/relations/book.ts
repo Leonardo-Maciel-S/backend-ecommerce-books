@@ -1,3 +1,4 @@
+import { relations } from "drizzle-orm";
 import { bookTable } from "../book.js";
 import { userTable } from "../user.js";
 
