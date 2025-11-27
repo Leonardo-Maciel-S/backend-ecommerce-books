@@ -22,6 +22,20 @@
       "when": 1762284920648,
       "tag": "0002_fresh_maginty",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1764265919829,
+      "tag": "0003_faithful_james_howlett",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1764266126025,
+      "tag": "0004_sparkling_wrecker",
+      "breakpoints": true
     }
   ]
 }
