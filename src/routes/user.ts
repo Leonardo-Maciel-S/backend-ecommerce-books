@@ -11,14 +11,16 @@ userRouter.post("/login", userService.login);
 userRouter.post("/logout", userService.logout);
 userRouter.get("/is-logged", userService.isLogged);
 
+userRouter.get("/address", loginValidation, userAddressService.getAll);
 userRouter.post(
-  "/user-address",
+  "/address",
   loginValidation,
   userAddressBodyValidate,
   userAddressService.create
 );
+
 userRouter.patch(
-  "/user-address/:id",
+  "/address/:id",
   loginValidation,
   userAddressBodyValidate,
   userAddressService.edit
