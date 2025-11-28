@@ -17,5 +17,11 @@ userRouter.post(
   userAddressBodyValidate,
   userAddressService.create
 );
+userRouter.patch(
+  "/user-address/:id",
+  loginValidation,
+  userAddressBodyValidate,
+  userAddressService.edit
+);
 
 export { userRouter };
