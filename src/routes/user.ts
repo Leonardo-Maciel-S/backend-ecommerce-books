@@ -1,7 +1,7 @@
 import express from "express";
 import { userService } from "../services/user/index.js";
 import { userAddressBodyValidate } from "../middlewares/user-address-body-validate.js";
-import { userAddressService } from "../services/user-address/index.js";
+import { userAddressService } from "../services/address/index.js";
 import { loginValidation } from "../middlewares/login-validation.js";
 
 const userRouter = express.Router();
