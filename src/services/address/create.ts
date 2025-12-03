@@ -31,7 +31,6 @@ export async function create(
       address,
     });
   } catch (e) {
-    console.log(e);
     return res
       .status(status.INTERNAL_SERVER_ERROR)
       .json({ message: "Erro inesperado." });
