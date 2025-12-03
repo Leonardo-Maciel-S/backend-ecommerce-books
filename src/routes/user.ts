@@ -3,6 +3,7 @@ import { userService } from "../services/user/index.js";
 import { userAddressBodyValidate } from "../middlewares/user-address-body-validate.js";
 import { userAddressService } from "../services/address/index.js";
 import { loginValidation } from "../middlewares/login-validation.js";
+import { idValidation } from "../middlewares/id-validations.js";
 
 const userRouter = express.Router();
 
@@ -21,9 +22,17 @@ userRouter.post(
 
 userRouter.patch(
   "/address/:id",
+  idValidation,
   loginValidation,
   userAddressBodyValidate,
   userAddressService.edit
+);
+
+userRouter.delete(
+  "/address/:id",
+  idValidation,
+  loginValidation,
+  userAddressService.deleteAddress
 );
 
 export { userRouter };
