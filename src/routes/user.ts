@@ -20,6 +20,13 @@ userRouter.post(
   userAddressService.create
 );
 
+userRouter.get(
+  "/address/:id",
+  idValidation,
+  loginValidation,
+  userAddressService.getById
+);
+
 userRouter.patch(
   "/address/:id",
   idValidation,
