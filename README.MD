@@ -28,15 +28,33 @@ Acessando a rota /user temos algumas funcionalidades:
 
 1. Separar livros por categoria
 1. Criar o tabela de carrinho
-1. Criar tabela para endereços
+1. Criar tabela para endereços &#x2705;
 1. Criar tabela de pedido
+1. Criar funcionalidades dos comentários
 
 ## Regras de negócio
 
-- Um usuário pode cadastrar vários livros.
-- Um livro pode ter apenas um usuário vinculado.
-- Um usuário pode ter vários endereços.
-- Um carrinho pode ter vários livros.
-- Um pedido vai ter apenas um carrinho vinculado e possuir o total do valor.
+### Usuário
+
+- Pode cadastrar vários livros.
+- Pode ter vários endereços.
 - Usuários deslogados apenas podem listar os livros.
-- Usuário só pode editar/deletar os livros que ele cadastrou
+- O usuário só pode editar/deletar os livros que ele cadastrou
+
+### Livro
+
+- Pode ter apenas um usuário vinculado.
+- Pode ter nenhum ou vários comentários
+
+### Comentários
+
+- Pode ter apenas um usuário vinculado
+- Pode ter apenas um livro cadastrado
+
+### Carrinho
+
+- Um carrinho pode ter vários livros.
+
+### Pedido
+
+- Um pedido vai ter apenas um carrinho vinculado e possuir o total do valor.
