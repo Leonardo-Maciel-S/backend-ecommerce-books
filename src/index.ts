@@ -5,6 +5,7 @@ import cors from "cors";
 
 import { bookRouter } from "./routes/book.js";
 import { userRouter } from "./routes/user.js";
+import { commentRouter } from "./routes/comment.js";
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(
     origin: origin,
     allowedHeaders: ["Content-type", "Authorization"],
     credentials: true,
-  })
+  }),
 );
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,6 +26,7 @@ app.use(cookieParse());
 
 app.use("/book", bookRouter);
 app.use("/user", userRouter);
+app.use("/comment", commentRouter);
 
 app.listen(port, () => {
   console.log("Api rodando em: http://localhost:" + port);
