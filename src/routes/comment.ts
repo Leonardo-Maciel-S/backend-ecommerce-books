@@ -5,7 +5,15 @@ import { idValidation } from "../middlewares/id-validations.js";
 
 const commentRouter = express.Router();
 
-commentRouter.get("/:id", idValidation, commentService.getAllCommentsByBookId);
 commentRouter.post("/", loginValidation, commentService.createComment);
+
+commentRouter.get("/:id", idValidation, commentService.getAllCommentsByBookId);
+
+commentRouter.delete(
+  "/:id",
+  loginValidation,
+  idValidation,
+  commentService.deleteById,
+);
 
 export { commentRouter };
