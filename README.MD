@@ -50,6 +50,8 @@ Acessando a rota /user temos algumas funcionalidades:
 
 - Pode ter apenas um usuário vinculado
 - Pode ter apenas um livro cadastrado
+- Somente usuários logados podem comentar.
+- O usuário que criou o comentário pode deleta-lo.
 
 ### Carrinho
 
