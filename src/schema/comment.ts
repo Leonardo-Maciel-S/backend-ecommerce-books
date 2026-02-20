@@ -7,4 +7,5 @@ export const commentSchema = yup.object({
   userName: yup.string().required("Nome do usuário é obrigatório"),
   evaluation: yup.number().required(),
   text: yup.string().required("Comentário é obrigatório"),
+  createdAt: yup.date(),
 });
