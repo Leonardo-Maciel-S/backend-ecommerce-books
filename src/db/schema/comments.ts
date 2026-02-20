@@ -1,4 +1,5 @@
-import { pgTable, real, text, uuid } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+import { pgTable, real, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const commentsTable = pgTable("comments", {
   id: uuid().primaryKey().defaultRandom(),
@@ -7,4 +8,7 @@ export const commentsTable = pgTable("comments", {
   userName: text(),
   evaluation: real(),
   text: text(),
+  createdAt: timestamp("created_at")
+    .default(sql`now()`)
+    .notNull(),
 });
