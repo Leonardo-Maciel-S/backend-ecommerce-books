@@ -41,8 +41,24 @@ export async function editComment(
         .status(status.BAD_REQUEST)
         .json({ message: "Livro não encontrado" });
     }
+  } catch (error) {
+    const e = error as ValidationError;
+    return res.status(status.BAD_REQUEST).json({ message: e.errors[0] });
+  }
 
-    if (user.id !== book[0].userId) {
+  try {
+    const dbComment = await db
+      .select()
+      .from(commentsTable)
+      .where(eq(commentsTable.id, commentId));
+
+    if (!dbComment[0]) {
+      return res
+        .status(status.BAD_REQUEST)
+        .json({ message: "Comentário não encontrado" });
+    }
+
+    if (user.id !== dbComment[0].userId) {
       return res
         .status(status.UNAUTHORIZED)
         .json({ message: "Esse usuário não é o criador do comentário." });
