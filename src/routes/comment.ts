@@ -9,6 +9,13 @@ commentRouter.post("/", loginValidation, commentService.createComment);
 
 commentRouter.get("/:id", idValidation, commentService.getAllCommentsByBookId);
 
+commentRouter.patch(
+  "/:id",
+  loginValidation,
+  idValidation,
+  commentService.editComment,
+);
+
 commentRouter.delete(
   "/:id",
   loginValidation,
