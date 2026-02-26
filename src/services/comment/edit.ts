@@ -59,7 +59,7 @@ export async function editComment(
       .where(eq(commentsTable.id, commentId))
       .returning();
 
-    res.status(status.CREATED).json({ comment: response[0] });
+    res.status(status.OK).json({ comment: response[0] });
   } catch (error) {
     res
       .status(status.INTERNAL_SERVER_ERROR)
