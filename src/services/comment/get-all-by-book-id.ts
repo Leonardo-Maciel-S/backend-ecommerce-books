@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { db } from "../../db/index.js";
 import status from "http-status";
-import { eq, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { commentsTable } from "../../db/schema/comments.js";
 
 export async function getAllCommentsByBookId(req: Request, res: Response) {
@@ -35,6 +35,7 @@ export async function getAllCommentsByBookId(req: Request, res: Response) {
       .select()
       .from(commentsTable)
       .where(eq(commentsTable.bookId, id!))
+      .orderBy(desc(commentsTable.createdAt))
       .limit(limit)
       .offset(offset);
 
