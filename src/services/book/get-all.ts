@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { db } from "../../db/index.js";
 import { bookTable } from "../../db/schema/book.js";
 import status from "http-status";
-import { and, ilike, or, sql } from "drizzle-orm";
+import { and, desc, ilike, or, sql } from "drizzle-orm";
 
 export async function getAllBooks(req: Request, res: Response) {
   const search = req.query.search || "";
@@ -18,8 +18,8 @@ export async function getAllBooks(req: Request, res: Response) {
     conditions.push(
       or(
         ilike(bookTable.title, `%${search}%`),
-        ilike(bookTable.author, `%${search}%`)
-      )
+        ilike(bookTable.author, `%${search}%`),
+      ),
     );
   }
 
@@ -41,12 +41,13 @@ export async function getAllBooks(req: Request, res: Response) {
   const totalPages = (total && Math.ceil(total / limit)) || 1;
 
   try {
-    const books = await await db
+    const books = await db
       .select()
       .from(bookTable)
       .where(and(...conditions))
       .limit(limit)
-      .offset(offset);
+      .offset(offset)
+      .orderBy(desc(bookTable.createdAt));
 
     res.status(status.OK).json({
       pagination: {
