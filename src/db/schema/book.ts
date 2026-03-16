@@ -1,4 +1,11 @@
-import { integer, pgTable, real, text, uuid } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  real,
+  text,
+  timestamp,
+  uuid,
+} from "drizzle-orm/pg-core";
 
 export const bookTable = pgTable("book", {
   id: uuid().primaryKey().defaultRandom(),
@@ -9,4 +16,6 @@ export const bookTable = pgTable("book", {
   coverImg: text(),
   evaluation: real(),
   userId: uuid(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at"),
 });
