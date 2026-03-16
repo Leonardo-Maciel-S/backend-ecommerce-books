@@ -9,7 +9,7 @@ import type { BookBody } from "../../interfaces/books.js";
 
 export async function patchBook(
   req: Request<{ id: string }, {}, BookBody>,
-  res: Response
+  res: Response,
 ) {
   const id = req.params.id;
   const body = req.body;
@@ -45,12 +45,14 @@ export async function patchBook(
       .update(bookTable)
       .set({
         ...body,
+        createdAt: new Date(),
       })
       .where(eq(bookTable.id, book.id))
       .returning();
 
     res.json({ book: newBook[0] });
   } catch (error) {
+    console.log(error);
     res
       .status(status.INTERNAL_SERVER_ERROR)
       .json({ message: "Erro inesperado" });
