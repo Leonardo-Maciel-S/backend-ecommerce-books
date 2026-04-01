@@ -6,6 +6,7 @@ import cors from "cors";
 import { bookRouter } from "./routes/book.js";
 import { userRouter } from "./routes/user.js";
 import { commentRouter } from "./routes/comment.js";
+import { cartRouter } from "./routes/cart.js";
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(cookieParse());
 app.use("/book", bookRouter);
 app.use("/user", userRouter);
 app.use("/comment", commentRouter);
+app.use("/cart", cartRouter);
 
 app.listen(port, () => {
   console.log("Api rodando em: http://localhost:" + port);
