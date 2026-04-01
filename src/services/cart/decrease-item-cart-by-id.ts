@@ -29,7 +29,7 @@ export async function decreaseItemCartById(
         .json({ message: "Item não está no carrinho" });
     }
 
-    if (cartItem.quantity >= 1) {
+    if (cartItem.quantity > 1) {
       const [newCartItem] = await db
         .update(cartItemTable)
         .set({ quantity: cartItem.quantity - 1 })
