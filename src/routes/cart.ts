@@ -13,6 +13,13 @@ cartRouter.get(
 );
 
 cartRouter.post(
+  "/increment/:id",
+  loginValidation,
+  idValidation,
+  cartService.incrementItemCartById,
+);
+
+cartRouter.post(
   "/add-cart-item/:id",
   loginValidation,
   idValidation,
