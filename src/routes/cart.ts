@@ -20,6 +20,13 @@ cartRouter.post(
 );
 
 cartRouter.post(
+  "/decrease/:id",
+  loginValidation,
+  idValidation,
+  cartService.decreaseItemCartById,
+);
+
+cartRouter.post(
   "/add-cart-item/:id",
   loginValidation,
   idValidation,
