@@ -3,7 +3,7 @@ import { integer, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 export const cartTable = pgTable("cart", {
   id: uuid().primaryKey().defaultRandom(),
   userId: uuid().notNull(),
-  userAddressId: uuid().notNull(),
+  userAddressId: uuid(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
