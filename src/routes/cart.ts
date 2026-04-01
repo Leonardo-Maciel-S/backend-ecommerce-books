@@ -7,6 +7,12 @@ const cartRouter = express.Router();
 
 cartRouter.get("/", loginValidation, cartService.getCartByUserId);
 cartRouter.get(
+  "/all-cart-item",
+  loginValidation,
+  cartService.getAllItemByCartId,
+);
+
+cartRouter.post(
   "/add-cart-item/:id",
   loginValidation,
   idValidation,
