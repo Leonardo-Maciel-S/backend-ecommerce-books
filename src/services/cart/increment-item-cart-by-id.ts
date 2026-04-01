@@ -36,5 +36,9 @@ export async function incrementItemCartById(
       .returning();
 
     return res.status(status.OK).json({ newCartItem });
-  } catch (error) {}
+  } catch (error) {
+    return res
+      .status(status.INTERNAL_SERVER_ERROR)
+      .json({ message: "Erro inesperado." });
+  }
 }
