@@ -36,7 +36,9 @@ export async function addCartItem(req: Request<{ id: string }>, res: Response) {
       .returning();
 
     return res.status(status.CREATED).json({ cartItem });
-  } catch (error) {}
-
-  return res.status(status.OK).json({ user, id });
+  } catch (error) {
+    return res
+      .status(status.INTERNAL_SERVER_ERROR)
+      .json({ message: "Erro inesperado." });
+  }
 }
