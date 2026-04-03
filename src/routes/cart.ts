@@ -12,14 +12,14 @@ cartRouter.get(
   cartService.getAllItemByCartId,
 );
 
-cartRouter.post(
+cartRouter.patch(
   "/increment/:id",
   loginValidation,
   idValidation,
   cartService.incrementItemCartById,
 );
 
-cartRouter.post(
+cartRouter.patch(
   "/decrease/:id",
   loginValidation,
   idValidation,
