@@ -32,15 +32,25 @@ export async function getAllItemByCartId(req: Request, res: Response) {
         book: {
           id: bookTable.id,
           title: bookTable.title,
+          autor: bookTable.author,
           coverImg: bookTable.coverImg,
           priceInCents: bookTable.priceInCents,
         },
       })
       .from(cartItemTable)
       .where(eq(cartItemTable.cartId, cart.id))
-      .leftJoin(bookTable, eq(bookTable.id, cartItemTable.bookId));
+      .leftJoin(bookTable, eq(bookTable.id, cartItemTable.bookId))
+      .orderBy(bookTable.title);
 
-    return res.status(status.CREATED).json({ cartItems });
+    const subtotal = cartItems.reduce((acc, item) => {
+      if (item.book) {
+        return item.cartItem.quantity * item.book?.priceInCents + acc;
+      }
+
+      return acc;
+    }, 0);
+
+    return res.status(status.CREATED).json({ cartItems, subtotal: subtotal });
   } catch (error) {
     return res
       .status(status.INTERNAL_SERVER_ERROR)
