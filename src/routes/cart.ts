@@ -33,4 +33,11 @@ cartRouter.post(
   cartService.addCartItem,
 );
 
+cartRouter.delete(
+  "/delete/:id",
+  loginValidation,
+  idValidation,
+  cartService.deleteItem,
+);
+
 export { cartRouter };
