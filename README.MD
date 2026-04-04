@@ -55,7 +55,10 @@ Acessando a rota /user temos algumas funcionalidades:
 
 ### Carrinho
 
-- Um carrinho pode ter vários livros.
+- Um usuário pode ter apenas um carrinho.
+- É possível cadastrar quantos itens quiser
+- É possível adicionar e remover itens.
+- O carrinho deve conter a soma dos seus itens
 
 ### Pedido
 
