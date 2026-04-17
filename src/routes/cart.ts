@@ -13,6 +13,13 @@ cartRouter.get(
 );
 
 cartRouter.patch(
+  "/set-default-address/:id",
+  loginValidation,
+  idValidation,
+  cartService.selectDefaultCartAddress,
+);
+
+cartRouter.patch(
   "/increment/:id",
   loginValidation,
   idValidation,
